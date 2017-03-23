@@ -1,0 +1,181 @@
+@import 'color';
+@import 'animations';
+
+
+$media-xs: '(max-width: 575px)';
+$media-sm: '(min-width: 576px)';
+$media-md: '(min-width: 768px)';
+$media-lg: '(min-width: 992px)';
+$media-xl: '(min-width: 1200px)';
+
+
+
+ @mixin breakpoints($media) {
+
+   @media #{$media} {
+
+    @content
+   }
+ };
+
+ @mixin widthAndHeight ($width, $height) {
+
+   width: $width;
+   height: $height;
+ }
+
+ @mixin fontProp($font-size, $font-weight,$color) {
+
+   font-size: $font-size;
+   font-weight: $font-weight;
+   color: $color;
+ }
+
+ @mixin posAbsProp($top,$left,$bottom,$right) {
+   position: absolute;
+   top: $top;
+   left: $left;
+   bottom: $bottom;
+   right: $right;
+ }
+ @mixin flexProp($direction,$align,$justify) {
+
+   display: flex;
+   flex-direction: $direction;
+   align-items: $align;
+   justify-content: $justify;
+ }
+
+ @mixin pseudoElems($width, $height) {
+
+   content: '';
+   display: block;
+   width: $width;
+   height: $height;
+ }
+@mixin formPlaceholder {
+
+  ::-webkit-input-placeholder {
+   color: #a1b8ca;
+   padding: 0.5rem;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: #a1b8ca;
+  padding: 0.5rem;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: #a1b8ca;
+  padding: 0.5rem;
+}
+
+:-ms-input-placeholder {
+  color: #a1b8ca;
+  padding: 0.5rem;
+}
+}
+
+
+@mixin arrow {
+
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: $main-grey;
+  color: white;;
+  @include fontProp(3rem,700, white);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+@mixin arrowProps($top,$left,$padding-side) {
+
+  left: $left;
+  top: $top;
+  padding-#{$padding-side}: 0.5rem;
+}
+
+@mixin moreInfoClass($main-color) {
+
+  @include widthAndHeight(200px,45px);
+  @include fontProp(1.7rem, 600 ,$main-color);
+  border: 2px solid $main-color;
+  background: transparent;
+  box-shadow: inset 0 0 0 0 $main-color;
+  transition: 0.4s;
+  @content;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+*:focus {
+
+  outline: 0;
+}
+
+html {
+    font-size: 62,5% !important;
+}
+
+body {
+    font-family: 'Cabin', sans-serif !important;
+    font-size: 1.7rem !important;
+    font-weight: 500;
+
+    @include breakpoints($media-xs) {
+
+      font-size: 1.8rem !important;
+    }
+}
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+a {
+    text-decoration: none !important;
+
+}
+
+a:visited {
+
+  
+}
+
+p {
+    padding: 1rem;
+    text-align: center;
+}
+
+section {
+    margin-bottom: 5rem;
+}
+
+ul {
+
+  list-style-type: none;
+  text-align: center;
+}
+
+
+
+@for $i from 1 through 6 {
+
+  h#{$i} {
+    text-align: center;
+  }
+
+}

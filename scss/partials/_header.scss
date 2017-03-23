@@ -1,0 +1,183 @@
+// header
+
+header {
+
+  height: 85px;
+  background: $light-beige;
+  border-top: 5px solid $main-purple;
+  width: 100%;
+  position: fixed;
+  z-index: 9000;
+  top: 0;
+
+  .head-wrapper {
+
+    height: 80px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+
+      img {
+
+        width: 80%;
+        height: auto;
+
+
+        @include breakpoints($media-sm) {
+
+        width: auto;
+        margin-left: 0;
+
+        }
+
+      }
+    }
+
+    nav {
+
+      align-self: flex-end;
+      font-family: 'Open Sans Condensed', sans-serif;
+
+      // Mobile-menu
+
+      .hamburger {
+          width: 40px;
+          height: 36px;
+          border: 2px solid transparentize($main-purple, 0.15);
+          transform: rotate(0deg);
+          transition: 0.4s ease-in-out;
+          margin-right: 1rem;
+          margin-bottom: 2rem;
+
+          &.extended {
+              transform: rotate(90deg);
+          }
+
+          span {
+              display: block;
+              height: 6px;
+              background-color: $main-purple;
+              margin: 4px 2px;
+          }
+          @include breakpoints($media-lg) {
+              display: none;
+          }
+      }
+
+    }
+  }
+
+  .menu-desktop {
+
+
+    li{
+
+      display: inline-block;
+      padding: 0 1rem;
+
+      a {
+          @include fontProp(1.6rem, bold,$main-grey);
+          transition: 0.4s ease-out;
+          &:hover {
+
+            opacity: 0.6;
+          }
+
+      }
+    }
+  }
+
+  .menu-mobile {
+
+    @include posAbsProp(auto,0,auto,auto);
+    width: 100%;
+    margin-top: 5.5rem;
+    z-index: 1;
+    display: none;
+
+      li{
+
+        background: $main-purple;
+        border: 1px solid lighten($main-purple, 5);
+        padding: 1rem 0;
+
+
+          a {
+               @include fontProp(1.6rem, bold,white);
+               transition: 0.4s ease-out;
+               &:hover {
+
+                 opacity: 0.6;
+               }
+
+           }
+
+      }
+
+  }
+
+
+}
+
+// main-background
+
+
+#main-background {
+  margin-top: 85px;
+  .background-wrapper {
+    position: relative;
+    img {
+
+      width: 100%;
+      height: auto;
+    }
+
+    .motto-wrapper {
+
+      @include posAbsProp(0,5%, auto, auto);
+      width: 40%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid red;
+
+        @include breakpoints($media-md) {
+
+          left: 10%;
+
+
+
+        }
+      h1 {
+        @include fontProp(1.5rem, bold, $light-beige);
+        text-align: center;
+
+        @include breakpoints($media-sm) {
+
+          font-size: 2.5rem;
+
+
+        }
+
+        @include breakpoints($media-lg) {
+
+          font-size: 4rem;
+
+
+        }
+
+        @include breakpoints($media-xl) {
+
+          font-size: 6rem;
+
+
+        }
+
+      }
+    }
+  }
+}

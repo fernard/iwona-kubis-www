@@ -1,0 +1,20 @@
+#contact {
+
+  background: url("../img/contact-bg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+   h2{
+
+     color: white;
+     &::before {
+
+       display: none;
+     }
+   }
+
+   #myForm {
+
+     @include flexProp(column, center, auto);
+     margin: 2rem 0;
+   }
+}
