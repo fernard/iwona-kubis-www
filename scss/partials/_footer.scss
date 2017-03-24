@@ -1,3 +1,6 @@
+
+// contact
+
 #contact {
 
   background: url("../img/contact-bg.jpg");
@@ -27,7 +30,7 @@
        @include pseudoElems(42px,37px);
        @include posAbsProp(10%,0, auto,auto);
        background: url('../img/contact-icons.png');
-
+       background-position: -45px 0;
 
        @include breakpoints($media-sm) {
            left: 10%;
@@ -62,7 +65,7 @@
 
           &::before {
 
-            background-position: -45px 0;
+            background-position: 0 0;
           }
         }
       }
@@ -146,3 +149,12 @@
   }
 
 }
+
+// ad-container
+
+  .ad-container {
+
+    @include widthAndHeight(100%,auto);
+    overflow: hidden;
+
+  }
