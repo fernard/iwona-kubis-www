@@ -115,7 +115,7 @@ h3 {
 #personal-development,
 #trainings {
     .block-content-wrapper {
-        border: 1px solid red;
+        
         margin: 2rem 0;
         @include breakpoints($media-md) {
             margin-bottom: 0;
@@ -236,12 +236,7 @@ h3 {
         }
     }
 
-    .photo-wrapper {
-        margin-top: 6rem;
-        @include breakpoints($media-lg) {
-            margin-top: 11rem;
-        }
-    }
+
 }
 
 #coaching-programs {
@@ -311,7 +306,6 @@ h3 {
 // opinions
 #opinions {
     .slider {
-        border: 1px solid red;
         margin-top: 5rem;
         position: relative;
 

@@ -7,7 +7,7 @@ $(document).ready(() => {
 
     $('body').removeClass('preload');
 
-    // determine menu class at document load
+    // determine menu class at document load and prevent Ad from showing
 
 
     (() => {
@@ -16,7 +16,13 @@ $(document).ready(() => {
 
         if (windowWidth < 992) {
 
+
+            const adScripts = $('body').find('script');
+            const adDiv = $('.ads');
+            adDiv.css('display','none');
+            adScripts.remove();
             $('#main-menu').removeClass('menu-desktop');
+
         } else {
 
             $('#main-menu').removeClass('menu-mobile');
@@ -58,7 +64,6 @@ $(document).ready(() => {
 
             $('.hamburger').toggleClass('extended');
         }
-
 
 
     });
