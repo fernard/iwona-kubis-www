@@ -155,7 +155,6 @@ $(document).ready(function () {
         if (href.indexOf('#') === 0) {
 
             var divOffsetTop = $(href).offset().top - 50;
-            console.log(divOffsetTop);
 
             $('body').animate({
 
@@ -216,6 +215,21 @@ $(document).ready(function () {
             }
         }]
 
+    });
+
+    // load Ad Banner and Google AdSense
+
+
+    var bannerScript = $('<script id="ApWidget_hzhjGpkc" type="text/javascript" src="https://static.agoraperformance.pl/ap_widget.js"></script>');
+    $('.ad-container').append(bannerScript);
+
+    $.getScript(bannerScript.attr('src'), function () {
+
+        new ApWidget({
+            creation_key: "hzhjGpkc",
+            ad_surface_key: "miV7cHYA",
+            label: ""
+        });
     });
 
     // Validate form

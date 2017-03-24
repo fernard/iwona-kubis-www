@@ -27,7 +27,7 @@ $(document).ready(() => {
 
     })();
 
-  
+
     // on resize
 
 
@@ -87,33 +87,33 @@ $(document).ready(() => {
 
     let handleLink = (event) => {
 
-      const href = $(event.target).attr('href');
+        const href = $(event.target).attr('href');
 
 
-      if (href.indexOf('#') === 0) {
+        if (href.indexOf('#') === 0) {
 
-          const divOffsetTop = $(href).offset().top - 50;
-          console.log(divOffsetTop);
+            const divOffsetTop = $(href).offset().top - 50;
 
-          $('body').animate({
 
-              scrollTop: divOffsetTop
+            $('body').animate({
 
-          }, 1000);
+                scrollTop: divOffsetTop
 
-      }
+            }, 1000);
+
+        }
 
     }
 
     menuLinks.on('click', (e) => {
 
-      handleLink(e);
+        handleLink(e);
 
     });
 
     trainingLink.on('click', (e) => {
 
-      handleLink(e);
+        handleLink(e);
 
     });
 
@@ -122,111 +122,127 @@ $(document).ready(() => {
     const moreInfoBtn = $('#development-topics').find('.more-info');
 
 
-    moreInfoBtn.on('click',(e) => {
+    moreInfoBtn.on('click', (e) => {
 
         $(e.target).next().slideToggle('quick');
 
     });
 
-  // run slick.js
+    // run slick.js
 
-  $('.slider').slick({
-    autoplay: true,
-    infinite: true,
-    nextArrow: '<a class="arrow left"><</a>',
-    prevArrow: '<a class="arrow right">></a>',
-    responsive: [
-  {
-    breakpoint: 500,
-    settings: {
+    $('.slider').slick({
+        autoplay: true,
+        infinite: true,
+        nextArrow: '<a class="arrow left"><</a>',
+        prevArrow: '<a class="arrow right">></a>',
+        responsive: [{
+            breakpoint: 500,
+            settings: {
 
-      arrows: false,
-    }
-  }]
-  });
+                arrows: false,
+            }
+        }]
+    });
 
-  $('.clients-slider').slick({
-    autoplaySpeed: 1500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    autoplay: true,
-    infinite: false,
-    arrows: false,
-    responsive: [
-  {
-    breakpoint: 520,
-    settings: {
+    $('.clients-slider').slick({
+        autoplaySpeed: 1500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        autoplay: true,
+        infinite: false,
+        arrows: false,
+        responsive: [{
+            breakpoint: 520,
+            settings: {
 
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    }
-  }]
+                slidesToShow: 1,
+                slidesToScroll: 1,
+            }
+        }]
 
-  });
+    });
 
-  // Validate form
-
-  var errorMessage = $('.error-message'),
-      form = $('#myForm'),
-      nameInput = $('#nameInput'),
-      emailInput = $('#emailInput'),
-      subject = $('#subject'),
-      message = form.find('#message');
-
-  form.on('submit', (e) => {
-
-      e.preventDefault();
-
-      const formData = {
-
-          name: nameInput.val(),
-          email: emailInput.val(),
-          subject: subject.val(),
-          message: message.val()
-
-      };
-
-      if (formData.name.length < 5) {
-
-          errorMessage.text('Za krótkie imię');
-          errorMessage.fadeIn('400');
-
-      } else if (formData.email.indexOf('@') === -1 || formData.email.indexOf('.') === -1) {
-          errorMessage.text('Niepoprawny adres e-mail');
-          errorMessage.fadeIn('400');
-      } else if (formData.subject.length < 5) {
-          errorMessage.text('Za krótki temat wiadomości');
-          errorMessage.fadeIn('400');
-      } else if (formData.message.length < 10) {
-          errorMessage.text('Za krótka wiadomość');
-          errorMessage.fadeIn('400');
-      } else {
-          // Sending form data
-          $.ajax({
-
-                  type: "POST",
-                  url: 'mail.php',
-                  data: formData,
-                  dataType: 'json'
+    // load Ad Banner and Google AdSense
 
 
-              }).done(function(success) {
-                  console.log(success);
+    const bannerScript = $('<script id="ApWidget_hzhjGpkc" type="text/javascript" src="https://static.agoraperformance.pl/ap_widget.js"></script>');
+    $('.ad-container').append(bannerScript);
 
-                  errorMessage.css('border', '2px solid green').css('color','green');
-                  errorMessage.text('Udało się wysłać wiadomość!');
-                  errorMessage.fadeIn('400');
 
-              })
-              .fail(function(error) {
+    $.getScript(bannerScript.attr('src'), () => {
 
-                  console.log(error);
-              })
-      }
+        new ApWidget({
+            creation_key: "hzhjGpkc",
+            ad_surface_key: "miV7cHYA",
+            label: ""
+        });
+    });
 
 
 
-  });
+    // Validate form
+
+    var errorMessage = $('.error-message'),
+        form = $('#myForm'),
+        nameInput = $('#nameInput'),
+        emailInput = $('#emailInput'),
+        subject = $('#subject'),
+        message = form.find('#message');
+
+    form.on('submit', (e) => {
+
+        e.preventDefault();
+
+        const formData = {
+
+            name: nameInput.val(),
+            email: emailInput.val(),
+            subject: subject.val(),
+            message: message.val()
+
+        };
+
+        if (formData.name.length < 5) {
+
+            errorMessage.text('Za krótkie imię');
+            errorMessage.fadeIn('400');
+
+        } else if (formData.email.indexOf('@') === -1 || formData.email.indexOf('.') === -1) {
+            errorMessage.text('Niepoprawny adres e-mail');
+            errorMessage.fadeIn('400');
+        } else if (formData.subject.length < 5) {
+            errorMessage.text('Za krótki temat wiadomości');
+            errorMessage.fadeIn('400');
+        } else if (formData.message.length < 10) {
+            errorMessage.text('Za krótka wiadomość');
+            errorMessage.fadeIn('400');
+        } else {
+            // Sending form data
+            $.ajax({
+
+                    type: "POST",
+                    url: 'mail.php',
+                    data: formData,
+                    dataType: 'json'
+
+
+                }).done(function(success) {
+                    console.log(success);
+
+                    errorMessage.css('border', '2px solid green').css('color', 'green');
+                    errorMessage.text('Udało się wysłać wiadomość!');
+                    errorMessage.fadeIn('400');
+
+                })
+                .fail(function(error) {
+
+                    console.log(error);
+                })
+        }
+
+
+
+    });
 
 
 
