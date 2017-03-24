@@ -1,11 +1,9 @@
 // header
 
 header {
-
-  height: 85px;
+  @include widthAndHeight (100%,85px);
   background: $light-beige;
   border-top: 5px solid $main-purple;
-  width: 100%;
   position: fixed;
   z-index: 9000;
   top: 0;
@@ -21,8 +19,7 @@ header {
 
       img {
 
-        width: 80%;
-        height: auto;
+        @include widthAndHeight (80%,auto);
 
 
         @include breakpoints($media-sm) {
@@ -43,8 +40,7 @@ header {
       // Mobile-menu
 
       .hamburger {
-          width: 40px;
-          height: 36px;
+          @include widthAndHeight (40px,36px);
           border: 2px solid transparentize($main-purple, 0.15);
           transform: rotate(0deg);
           transition: 0.4s ease-in-out;
@@ -130,18 +126,15 @@ header {
     position: relative;
     img {
 
-      width: 100%;
-      height: auto;
+      @include widthAndHeight (100%,auto);
       max-height: 100vh;
     }
 
     .motto-wrapper {
 
       @include posAbsProp(0,5%, auto, auto);
-      width: 40%;
-      height: 100%;
-      display: flex;
-      align-items: center;
+      @include widthAndHeight (40%,100%);
+      @include flexProp(row,center, auto);
       overflow: hidden;
 
 

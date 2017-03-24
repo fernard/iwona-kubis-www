@@ -67,9 +67,9 @@ $(document).ready(() => {
     // animate menu
 
     const hambuger = $('.hamburger');
-    hambuger.on('click', (e) => {
+    hambuger.on('click', () => {
 
-        $(e.target).toggleClass('extended');
+        $('.hamburger').toggleClass('extended');
 
         $('.menu-mobile').animate({
 
