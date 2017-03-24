@@ -1,1 +1,23 @@
 // Rules for packages
+
+.package {
+    margin-top: 15rem;
+
+    .package-img {
+        margin: 3rem auto;
+        @include widthAndHeight(180px,200px);
+        background: url('../img/packages.png') no-repeat;
+    }
+}
+
+.comfort {
+    .package-img {
+        background-position: -180px 0;
+    }
+}
+
+.premium {
+    .package-img {
+        background-position: -360px 0;
+    }
+}
