@@ -1,7 +1,11 @@
 // General rules
 
 h2 {
-    @include fontProp(4rem, 400 ,$main-purple);
+    @include fontProp(3.2rem, 400 ,$main-purple);
+
+    @include breakpoints($media-sm) {
+        font-size: 4rem;
+    }
 
     &::before {
         @include pseudoElems(180px,21px);
@@ -19,7 +23,6 @@ h3 {
 }
 
 .paragraph-wrapper {
-
     margin-top: 50px;
 
     p {
@@ -75,16 +78,11 @@ h3 {
                 width: 80%;
             }
         }
-
-        &:nth-of-type(2) {
-            .img-wrapper {
-                background-position: -112px 0;
-            }
-        }
-
-        &:last-of-type {
-            .img-wrapper {
-                background-position: -224px 0;
+        @for $i from 1 through 3 {
+            &:nth-of-type(#{$i}) {
+                .img-wrapper {
+                    background-position: (-120px * ($i - 1)) 0;
+                }
             }
         }
     }
@@ -92,7 +90,7 @@ h3 {
 
 .more-info {
     @include moreInfoClass($second-beige );
-    margin: 0 auto 1rem auto;
+    margin: 0 auto 1rem;
     display: block;
     text-align: center;
     padding-top: 1rem;
@@ -114,7 +112,8 @@ h3 {
 // personal-development
 
 #coaching,
-#personal-development, #trainings {
+#personal-development,
+#trainings {
     .block-content-wrapper {
         border: 1px solid red;
         margin: 2rem 0;
@@ -163,31 +162,14 @@ h3 {
     margin-top: 5rem;
 
     .col-xs-12 {
-        &:nth-of-type(2) {
-            .topic-wrapper {
-                h3 {
-                    color: lighten($main-grey,20);
-                }
-            }
-        }
-
-        &:last-of-type {
-            .topic-wrapper {
-                h3 {
-                    color: $main-purple;
-                }
-            }
-        }
-
         .topic-wrapper {
             margin-top: 3rem;
             @include flexProp(column,center,auto);
             color: $main-grey;
 
             .topic-img {
-                @include widthAndHeight(60px,70px);
-                background: url('../img/topic-thumbnails.png') no-repeat;
-                background-position: 10px 0;
+                @include widthAndHeight(80px,70px);
+                background: url('../img/subject-thumbnails.png') no-repeat;
                 margin: 1.5rem 0;
             }
 
@@ -211,6 +193,31 @@ h3 {
                 &:hover {
                     box-shadow: inset 200px 0 0 0 $main-grey;
                     color: white;
+                }
+            }
+        }
+        @for $i from 1 through 3 {
+            &:nth-of-type(#{$i}) {
+                .topic-wrapper {
+                    .topic-img {
+                        background-position: (-80px * ($i - 1)) 0;
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(2) {
+            .topic-wrapper {
+                h3 {
+                    color: lighten($main-grey,20);
+                }
+            }
+        }
+
+        &:last-of-type {
+            .topic-wrapper {
+                h3 {
+                    color: $main-purple;
                 }
             }
         }
@@ -278,8 +285,6 @@ h3 {
                 color: white;
             }
         }
-
-
     }
 
     .offer {
@@ -303,81 +308,91 @@ h3 {
         }
     }
 }
-
 // opinions
-
 #opinions {
     .slider {
-      border: 1px solid red;
-      margin-top: 5rem;
-      position: relative;
+        border: 1px solid red;
+        margin-top: 5rem;
+        position: relative;
 
+        .arrow {
+            @include arrow;
+            z-index: 1;
+            display: flex;
+            transition: 0.4s;
 
-      .arrow {
-          @include arrow;
-          z-index: 1;
-          display: flex;
-          transition: 0.4s;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
 
-          &:hover {
+        .left {
+            @include arrowProps(45%,5%,right);
+        }
 
-            opacity: 0.7;
-          }
-          }
+        .right {
+            @include arrowProps(45%,90%,left);
+        }
 
-
-      .left {
-          @include arrowProps(45%,5%,right);
-      }
-
-      .right {
-          @include arrowProps(45%,90%,left);
-      }
+        div {
+            @for $i from 1 through 3 {
+                &:nth-of-type(#{$i}) {
+                    .slide {
+                        .person-img {
+                            background-position: (-138px * ($i - 1)) 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 
-  .slide {
+    .slide {
+        @include flexProp(column,center,auto);
+        @include widthAndHeight(70%,auto);
+        margin: 0 auto;
 
-    @include flexProp(column,center,auto);
-    @include widthAndHeight(70%,auto);
-    margin: 0 auto;
+        .person-img {
+            @include widthAndHeight(138px,138px);
+            background: url('../img/opinions-img.png');
+            border-radius: 100%;
+        }
 
-    .person-img {
+        h3 {
+            span {
+                @include fontProp(2rem, 600 ,$main-purple);
+                display: block;
+            }
 
-      @include widthAndHeight(138px,138px);
-      background: url('../img/opinions-img.png');
-      border-radius: 100%;
+            &::after {
+                @include pseudoElems(80%,1px);
+                margin: 2rem auto 0;
+                background: $second-beige;
+            }
+        }
+
+        p {
+            @include widthAndHeight(80%,auto);
+            @include fontProp(1.3rem, normal, inherit);
+
+            @include breakpoints($media-sm) {
+                font-size: 1.7rem;
+            }
+        }
     }
-
-    h3 {
-
-      span {
-        @include fontProp(2rem, 600 ,$main-purple);
-        display: block;
-
-      }
-
-      &::after {
-        @include pseudoElems(80%,1px);
-        margin: 2rem auto 0 auto;
-        background: $second-beige;
-      }
-    }
-
-    p {
-
-      @include widthAndHeight(80%,auto);
-
-    }
-
-  }
-
-
 }
-
 // trainings
-
 #trainings {
+  .block-wrapper {
 
+    .block-content-wrapper {
+      .block-img {
+
+        background-position: -80px 10px;
+      }
+
+    }
+  }
 
     .block-wrapper:nth-of-type(2) {
         background: url("../img/training-bg.jpg");
@@ -385,24 +400,22 @@ h3 {
         background-size: cover;
 
         .block-content-wrapper {
+                    margin-bottom: 3rem;
 
-          margin-bottom: 3rem;
         }
 
+        h2 {
+            @include fontProp(3rem, 400 ,$light-beige);
+            margin-top: 2rem;
 
-          h2 {
-              @include fontProp(3rem, 400 ,$light-beige);
-              margin-top: 1rem;
+            &::before {
+                @include pseudoElems(42px,46px);
+                background: url('../img/training-thumb.png');
+                margin-bottom: 1rem;
+            }
+        }
 
-              &::before {
-                  @include pseudoElems(42px,46px);
-                  background: red;
-
-              }
-          }
-
-          h3 {
-
+        h3 {
             @include fontProp(auto,auto,$second-beige);
             text-align: left;
             margin-bottom: 3rem;
@@ -412,26 +425,44 @@ h3 {
             }
 
             &::after {
-              @include pseudoElems(40%,2px);
-              background: $main-purple;
-
-
+                @include pseudoElems(40%,2px);
+                background: $main-purple;
             }
-          }
+        }
 
-          p {
-
+        p {
             text-align: left;
-
             @include breakpoints($media-lg) {
                 padding: 0 3rem;
             }
+
             span {
-              @include fontProp(2rem, 600 ,inherit);
-
+                @include fontProp(2rem, 600 ,inherit);
             }
-          }
-
         }
-
     }
+}
+
+// clients-slider
+
+.clients-slider {
+
+  margin-top: 5rem;
+
+  div {
+    @for $i from 1 through 9 {
+        &:nth-of-type(#{$i}) {
+            .client {
+                background-position: (-150px * ($i - 1)) 0;
+            }
+        }
+    }
+
+  }
+
+  .client {
+
+    @include widthAndHeight(150px,100px);
+    background: url('../img/clients-thumb.png') no-repeat;
+  }
+}

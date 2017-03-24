@@ -3,18 +3,138 @@
   background: url("../img/contact-bg.jpg");
   background-attachment: fixed;
   background-size: cover;
+  margin-bottom: 0;
+
    h2{
 
      color: white;
+     margin: 1.5rem 0;
      &::before {
 
        display: none;
      }
    }
 
-   #myForm {
 
-     @include flexProp(column, center, auto);
-     margin: 2rem 0;
+   .contact-info-wrapper {
+
+     position: relative;
+     text-align: center;
+     border: 1px solid red;
+     padding: 1rem 0;
+
+     &::before {
+
+       @include pseudoElems(42px,37px);
+       @include posAbsProp(10%,0, auto,auto);
+       background: url('../img/contact-icons.png');
+
+
+     }
+
+
+
+     a {
+
+       color: white !important;
+       transition: all 0.5s;
+       &:hover {
+
+        padding-left: 1.5rem;
+        
+       }
+     }
    }
+
+   .row:nth-of-type(2) {
+
+      .col-xs-12:nth-of-type(2) {
+
+        .contact-info-wrapper {
+
+          &::before {
+
+            background-position: -45px 0;
+          }
+        }
+      }
+   }
+
+   .social-media-wrapper {
+     @include flexProp(row,center,center);
+     background: transparentize(black, 0.50);
+     padding: 1rem 0;
+
+
+     .sm-icon {
+       @include widthAndHeight(50px,42px);
+       display: block;
+       background: url('../img/sm-icons.png');
+           transition: 0.4s;
+        &:hover {
+
+          opacity: 0.7;
+        }
+
+       @for $i from 1 through 5 {
+
+         &:nth-of-type(#{$i}) {
+
+           background-position: (-50px * ($i - 1)) 0;
+         }
+       }
+
+     }
+   }
+
+
+}
+
+#myForm {
+
+  @include flexProp(column, center, auto);
+  @include formPlaceholder;
+  margin: 2rem 0;
+
+  input:not([type='submit']), textarea {
+    @include widthAndHeight(100%,auto);
+    background: transparentize(white, 0.40);
+    border: 0;
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
+    transition: 0.3s all;
+    &:focus {
+
+      background: transparentize(white, 0.20);
+    }
+  }
+
+  input[type="submit"] {
+      @include widthAndHeight(100px,auto);
+      @include fontProp(1.8rem, 700, $light-beige);
+      background-color: $main-purple;
+      border: none;
+      width: 40%;
+      padding: 0.5rem 0;
+      margin-top: 1rem;
+      transition: 0.4s;
+      &:hover {
+
+        background-color: $light-beige;
+        color: $main-purple;
+      }
+  }
+
+  .error-message {
+      @include widthAndHeight(250px,auto);
+      @include fontProp(medium, 700, red);
+      display: none;
+      background: transparentize(white, 0.4);
+      border: 2px solid red;
+      padding: 0.5rem;
+      text-align: center;
+      margin: 1rem 0;
+
+  }
+
 }

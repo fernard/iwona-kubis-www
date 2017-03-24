@@ -56,22 +56,22 @@ $media-xl: '(min-width: 1200px)';
 @mixin formPlaceholder {
 
   ::-webkit-input-placeholder {
-   color: #a1b8ca;
+   color: $main-grey;
    padding: 0.5rem;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  color: #a1b8ca;
+  color: $main-grey;
   padding: 0.5rem;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-  color: #a1b8ca;
+  color: $main-grey;
   padding: 0.5rem;
 }
 
 :-ms-input-placeholder {
-  color: #a1b8ca;
+  color: $main-grey;
   padding: 0.5rem;
 }
 }
@@ -147,12 +147,12 @@ body {
 }
 a {
     text-decoration: none !important;
-
+    cursor: pointer;
 }
 
 a:visited {
 
-  
+
 }
 
 p {
