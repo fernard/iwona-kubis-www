@@ -1,4 +1,3 @@
-
 module.exports = {
     entry: ["./js/app.js"],
     output: {
@@ -20,8 +19,6 @@ module.exports = {
                 loaders: ['style-loader', 'css-loader', 'sass-loader']
 
             },
-
-
             {
 
                 test: /\.(png|jpg)$/,

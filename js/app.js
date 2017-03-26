@@ -1,4 +1,7 @@
+import $ from 'jquery';
+import './slick/slick';
 import '../scss/main.scss';
+
 
 $(document).ready(() => {
 
