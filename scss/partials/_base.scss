@@ -285,27 +285,47 @@ h3 {
     .offer {
         position: relative;
         overflow: hidden;
+        margin-bottom: 2rem;
 
-        &:hover .ul-hover {
-            left:0;
+        &:hover .offer-hover:first-of-type {
+            left: 0;
 
         }
 
-        .ul-hover {
+        &:hover .offer-hover:last-of-type {
+            right: 0;
+
+        }
+
+        &:hover h4 {
+
+          opacity: 1;
+        }
+
+        .offer-hover {
             @include posAbsProp(0,-100%,auto,auto);
-            @include widthAndHeight(100%,92%);
+            @include widthAndHeight(100%,50%);
             @include flexProp(column,center,center);
             background: transparentize($main-purple, 0.1);
-            transition: all 0.3s ease-out;
+            transition: all 0.25s ease-out;
 
+            &:last-of-type {
 
-            h4 {
-                @include widthAndHeight(80%, auto);
-                @include fontProp(2rem, 700 ,white);
-                padding: 1rem;
-                border: 2px solid transparentize(white, 0.5);
-                background: transparentize($main-purple, 0.2);
+              @include posAbsProp(auto,auto,0,-100%);
             }
+        }
+
+
+
+        h4 {
+            @include posAbsProp(auto,10%,auto,auto);
+            @include widthAndHeight(80%, auto);
+            @include fontProp(2rem, 700 ,white);
+            padding: 1rem;
+            border: 2px solid transparentize(white, 0.5);
+            opacity: 0;
+
+
         }
     }
 }

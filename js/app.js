@@ -133,6 +133,18 @@ $(document).ready(() => {
 
     });
 
+    // determine h4 position in their wrapper
+
+    const allH4 = $('h4');
+    const offerWrapperHeight = allH4.parent().innerHeight();
+
+    allH4.each(function() {
+
+      $(this).css('top',(offerWrapperHeight - $(this).innerHeight()) / 2);
+    }
+
+  );
+
     // run slick.js
 
     $('.slider').slick({
