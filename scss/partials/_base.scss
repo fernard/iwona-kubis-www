@@ -115,7 +115,7 @@ h3 {
 #personal-development,
 #trainings {
     .block-content-wrapper {
-        
+
         margin: 2rem 0;
         @include breakpoints($media-md) {
             margin-bottom: 0;
@@ -287,7 +287,8 @@ h3 {
         overflow: hidden;
 
         &:hover .ul-hover {
-            left: 0;
+            left:0;
+
         }
 
         .ul-hover {
@@ -295,10 +296,15 @@ h3 {
             @include widthAndHeight(100%,92%);
             @include flexProp(column,center,center);
             background: transparentize($main-purple, 0.1);
-            transition: 0.4s ease-in-out;
+            transition: all 0.3s ease-out;
 
-            p {
+
+            h4 {
+                @include widthAndHeight(80%, auto);
                 @include fontProp(2rem, 700 ,white);
+                padding: 1rem;
+                border: 2px solid transparentize(white, 0.5);
+                background: transparentize($main-purple, 0.2);
             }
         }
     }
