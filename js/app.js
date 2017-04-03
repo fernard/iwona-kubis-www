@@ -122,16 +122,24 @@ $(document).ready(() => {
 
     });
 
-    // handle more-info buttons on topic
+    // handle more-info buttons on topic and ebooks
 
     const moreInfoBtn = $('#development-topics').find('.more-info');
+    const descBtn = $('.ebook-wrapper').find('.more-info:first-of-type');
+
+    const handleButton = (elem) => {
+
+      elem.on('click', (e) => {
+
+          $(e.target).next().slideToggle('quick');
+
+      });
+    }
+
+    handleButton(moreInfoBtn);
+    handleButton(descBtn);
 
 
-    moreInfoBtn.on('click', (e) => {
-
-        $(e.target).next().slideToggle('quick');
-
-    });
 
     // determine h4 position in their wrapper
 

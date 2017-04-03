@@ -2,7 +2,6 @@
 
 h2 {
     @include fontProp(3.2rem, 400 ,$main-purple);
-
     @include breakpoints($media-sm) {
         font-size: 4rem;
     }
@@ -38,8 +37,7 @@ h3 {
 }
 
 .column-wrapper {
-
-  @include flexProp(column,center,auto);
+    @include flexProp(column,center,auto);
 }
 
 .block-wrapper {
@@ -118,10 +116,7 @@ h3 {
 #coaching,
 #personal-development,
 #trainings {
-
-
     .block-content-wrapper {
-
         margin: 2rem 0;
         @include breakpoints($media-md) {
             margin-bottom: 0;
@@ -165,8 +160,6 @@ h3 {
 }
 
 #development-topics {
-
-
     .col-xs-12 {
         .topic-wrapper {
             margin-top: 3rem;
@@ -240,8 +233,6 @@ h3 {
             background-position: -60px 10px;
         }
     }
-
-
 }
 
 #coaching-programs {
@@ -293,17 +284,14 @@ h3 {
 
         &:hover .offer-hover:first-of-type {
             left: 0;
-
         }
 
         &:hover .offer-hover:last-of-type {
             right: 0;
-
         }
 
         &:hover h4 {
-
-          opacity: 1;
+            opacity: 1;
         }
 
         .offer-hover {
@@ -313,12 +301,9 @@ h3 {
             transition: all 0.25s ease-out;
 
             &:last-of-type {
-
-              @include posAbsProp(auto,auto,0,-100%);
+                @include posAbsProp(auto,auto,0,-100%);
             }
         }
-
-
 
         h4 {
             @include posAbsProp(auto,10%,auto,auto);
@@ -327,12 +312,11 @@ h3 {
             padding: 1rem;
             border: 2px solid transparentize(white, 0.5);
             opacity: 0;
-
-
         }
     }
 }
 // opinions
+
 #opinions {
     .slider {
         margin-top: 5rem;
@@ -371,7 +355,6 @@ h3 {
     }
 
     .slide {
-
         @include widthAndHeight(70%,auto);
         margin: 0 auto;
 
@@ -397,7 +380,6 @@ h3 {
         p {
             @include widthAndHeight(80%,auto);
             @include fontProp(1.3rem, normal, inherit);
-
             @include breakpoints($media-sm) {
                 font-size: 1.7rem;
             }
@@ -405,17 +387,15 @@ h3 {
     }
 }
 // trainings
+
 #trainings {
-  .block-wrapper {
-
-    .block-content-wrapper {
-      .block-img {
-
-        background-position: -80px 10px;
-      }
-
+    .block-wrapper {
+        .block-content-wrapper {
+            .block-img {
+                background-position: -80px 10px;
+            }
+        }
     }
-  }
 
     .block-wrapper:nth-of-type(2) {
         background: url("../img/training-bg.jpg");
@@ -423,8 +403,7 @@ h3 {
         background-size: cover;
 
         .block-content-wrapper {
-                    margin-bottom: 3rem;
-
+            margin-bottom: 3rem;
         }
 
         h2 {
@@ -465,96 +444,81 @@ h3 {
         }
     }
 }
-
 // clients-slider
-
 .clients-slider {
+    margin-top: 5rem;
 
-  margin-top: 5rem;
-
-  div {
-    @for $i from 1 through 9 {
-        &:nth-of-type(#{$i}) {
-            .client {
-                background-position: (-150px * ($i - 1)) 0;
+    div {
+        @for $i from 1 through 9 {
+            &:nth-of-type(#{$i}) {
+                .client {
+                    background-position: (-150px * ($i - 1)) 0;
+                }
             }
         }
     }
 
-  }
-
-  .client {
-
-    @include widthAndHeight(150px,100px);
-    background: url('../img/clients-thumb.png') no-repeat;
-  }
+    .client {
+        @include widthAndHeight(150px,100px);
+        background: url('../img/clients-thumb.png') no-repeat;
+    }
 }
-
 // Ebooks
 .col-xs-12 {
-
-
-
-  @for $i from 1 through 3 {
-      &:nth-of-type(#{$i}) {
-          .ebook-wrapper {
-              .ebook-img {
-                  background-position: (-178px * ($i - 1)) 0;
-              }
-          }
-      }
-  }
-
-
+    @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) {
+            .ebook-wrapper {
+                .ebook-img {
+                    background-position: (-178px * ($i - 1)) 0;
+                }
+            }
+        }
+    }
 }
 
-.ebook-wrapper, .more-info {
-
-  transition: 0.3s;
+.ebook-wrapper,
+.more-info {
+    transition: 0.3s;
 }
+
 .ebook-wrapper {
-
     padding-bottom: 1rem;
     margin-top: 5rem;
 
-   &:hover {
-
-     box-shadow: inset 0px 0px 0px 2px transparentize($main-purple,0.3);
-
-   }
-
-   &:hover .more-info{
-
-     opacity: 1;
-   }
-
-   .ebook-img {
-     @include widthAndHeight(177.5px,250px);
-     background: url('../img/ebooks-thumb.png') no-repeat;
-     margin: 2rem 0;
-
-   }
-
-
-  p {
-      @include widthAndHeight(80%,auto);
-      @include breakpoints($media-lg) {
-          width: 100%;
-      }
-
+    &:hover {
+        box-shadow: inset 0 0 0 2px transparentize($main-purple,0.3);
     }
 
-  .more-info {
-      @include moreInfoClass($main-purple);
-      opacity: 1;
+    &:hover .more-info {
+        opacity: 1;
+    }
 
-      @include breakpoints($media-sm) {
-          opacity: 0;
-      }
+    .ebook-img {
+        @include widthAndHeight(177.5px,250px);
+        background: url('../img/ebooks-thumb.png') no-repeat;
+        margin: 2rem 0;
+    }
 
-    &:hover {
-          box-shadow: inset 200px 0 0 0 $main-purple;
-          color: white;
-      }
-}
+    p {
+        @include widthAndHeight(80%,auto);
+        display: none;
+        @include breakpoints($media-lg) {
+            width: 100%;
+        }
+    }
+
+    .more-info {
+        @include moreInfoClass($main-purple);
+        margin: 1.5rem 0;
+        opacity: 0;
+        &:first-of-type {
+                opacity: 1;
+            }
+
+
+        &:hover {
+            box-shadow: inset 200px 0 0 0 $main-purple;
+            color: white;
+        }
+    }
 }
