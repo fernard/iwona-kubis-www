@@ -150,8 +150,8 @@ $(document).ready(() => {
     $('.slider').slick({
         autoplay: true,
         infinite: true,
-        nextArrow: '<a class="arrow left"><</a>',
-        prevArrow: '<a class="arrow right">></a>',
+        nextArrow: '<a class="arrow right">></a>',
+        prevArrow: '<a class="arrow left"><</a>',
         responsive: [{
             breakpoint: 500,
             settings: {
