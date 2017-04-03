@@ -469,7 +469,7 @@ h3 {
         &:nth-of-type(#{$i}) {
             .ebook-wrapper {
                 .ebook-img {
-                    background-position: (-178px * ($i - 1)) 0;
+                    background-position: (-180px * ($i - 1)) 0;
                 }
             }
         }
@@ -494,7 +494,7 @@ h3 {
     }
 
     .ebook-img {
-        @include widthAndHeight(177.5px,250px);
+        @include widthAndHeight(179px,250px);
         background: url('../img/ebooks-thumb.png') no-repeat;
         margin: 2rem 0;
     }

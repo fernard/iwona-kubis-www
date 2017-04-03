@@ -124,14 +124,24 @@ $(document).ready(() => {
 
     // handle more-info buttons on topic and ebooks
 
+    let clickCount = 0;
     const moreInfoBtn = $('#development-topics').find('.more-info');
     const descBtn = $('.ebook-wrapper').find('.more-info:first-of-type');
-
     const handleButton = (elem) => {
 
       elem.on('click', (e) => {
 
-          $(e.target).next().slideToggle('quick');
+          const targetElem = $(e.target);
+          targetElem.next().slideToggle('quick');
+          clickCount++;
+
+          if(clickCount % 2 !== 0) {
+
+            targetElem.text('SCHOWAJ OPIS');
+          } else {
+
+            targetElem.text('CZYTAJ OPIS');
+          }
 
       });
     }
