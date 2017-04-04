@@ -1,15 +1,26 @@
 <?php
+
   $headers  = "Content-type: text/html; charset=utf-8 \r\n";
-  // header("Access-Control-Allow-Origin: *");
+  $headers .= "From: biuro@iwona-kubis.pl";
+
 
   if($_POST) {
-    $to = 'pawel.kubis1989@gmail.com';
+    $to = 'iwona@iwona-kubis.pl';
     $name = $_POST['name'];
     $email = $_POST['email'];
     $subject = $_POST['subject'];
-    $message = 'Temat wiadomości: '.$subject.'<br> Od:'.$email.'<br> Treść wiadomości: '.$_POST['message'];
+    $message = '<!doctype html>
+                <html>
+                <head>
+                <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+                <title>'.$subject.'</title>
+                </head>
+                <body>
+                <h2>Nadawca: '.$email.'</h2>
+                <p><b>Treść wiadomości:</b><br>'.$_POST['message'].'</p>
+                </body></html>';
 
-    mail($to,$subject,$message);
+    mail($to,$subject,$message,$headers);
     $info = array('Status'=>'OK');
     echo json_encode($info);
   } else {
