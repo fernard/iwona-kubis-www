@@ -267,7 +267,7 @@ $(document).ready(() => {
                     errorMessage.css('border', '2px solid green').css('color', 'green');
                     errorMessage.text('Udało się wysłać wiadomość!');
                     errorMessage.fadeIn('400');
-
+                    
                 })
                 .fail(function(error) {
 
