@@ -125,28 +125,28 @@ $media-xl: '(min-width: 1200px)';
 }
 
 html {
-    font-size: 62,5% !important;
+    font-size: 62,5%;
 }
 
 body {
-    font-family: 'Cabin', sans-serif !important;
-    font-size: 1.7rem !important;
+    font-family: 'Cabin', sans-serif;
+    font-size: 1.7rem;
     font-weight: 500;
 
     @include breakpoints($media-xs) {
 
-      font-size: 1.8rem !important;
+      font-size: 1.8rem;
     }
 }
 
 .preload * {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -ms-transition: none !important;
-  -o-transition: none !important;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
 }
 a {
-    text-decoration: none !important;
+    text-decoration: none;
     cursor: pointer;
 }
 

@@ -197,21 +197,7 @@ $(document).ready(() => {
 
     });
 
-    // load Ad Banner and Google AdSense
-
-
-    const bannerScript = $('<script id="ApWidget_hzhjGpkc" type="text/javascript" src="https://static.agoraperformance.pl/ap_widget.js"></script>');
-    $('.ad-container').append(bannerScript);
-
-
-    $.getScript(bannerScript.attr('src'), () => {
-
-        new ApWidget({
-            creation_key: "hzhjGpkc",
-            ad_surface_key: "miV7cHYA",
-            label: ""
-        });
-    });
+  
 
 
 
@@ -267,7 +253,7 @@ $(document).ready(() => {
                     errorMessage.css('border', '2px solid green').css('color', 'green');
                     errorMessage.text('Udało się wysłać wiadomość!');
                     errorMessage.fadeIn('400');
-                    
+
                 })
                 .fail(function(error) {
 
