@@ -1,5 +1,22 @@
 // General rules
 
+.fade-in {
+
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(.99,.13,.17,.67),
+              opacity 0.4s linear;
+
+  &.active {
+
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+
 h2 {
     @include fontProp(3.2rem, 400 ,$main-purple);
     @include breakpoints($media-sm) {

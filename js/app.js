@@ -90,7 +90,7 @@ $(document).ready(() => {
     const trainingLink = $('#trainings').find('a');
 
 
-    let handleLink = (event) => {
+    function handleLink(event) {
 
         const href = $(event.target).attr('href');
 
@@ -98,7 +98,6 @@ $(document).ready(() => {
         if (href.indexOf('#') === 0) {
 
             const divOffsetTop = $(href).offset().top - 50;
-
 
             $('body').animate({
 
@@ -110,17 +109,37 @@ $(document).ready(() => {
 
     }
 
-    menuLinks.on('click', (e) => {
+    menuLinks.on('click',handleLink);
+    trainingLink.on('click', handleLink);
 
-        handleLink(e);
+    // handle fade-in effect
 
-    });
+    const fadeInElems = $('.fade-in');
 
-    trainingLink.on('click', (e) => {
 
-        handleLink(e);
+    function handleFadeIn() {
 
-    });
+      fadeInElems.each((index, elem) => {
+
+        const fadeInAt = ($(window).scrollTop() + $(window).innerHeight()) - ($(elem).innerHeight() / 4);
+        const elemBottom = $(elem).offset().top + $(elem).innerHeight();
+        const isHalfVisible = fadeInAt > $(elem).offset().top;
+        const isNotScrolledOver = $(window).scrollTop() < elemBottom;
+
+        if (isHalfVisible && isNotScrolledOver) {
+          $(elem).addClass('active');
+        } else {
+
+          $(elem).removeClass('active');
+        }
+
+
+      });
+
+
+    }
+
+    $(window).on('scroll',handleFadeIn);
 
     // handle more-info buttons on topic and ebooks
 
@@ -144,7 +163,7 @@ $(document).ready(() => {
           }
 
       });
-    }
+    };
 
     handleButton(moreInfoBtn);
     handleButton(descBtn);
@@ -156,9 +175,9 @@ $(document).ready(() => {
     const allH4 = $('h4');
     const offerWrapperHeight = allH4.parent().innerHeight();
 
-    allH4.each(function() {
+    allH4.each(function(index, header) {
 
-      $(this).css('top',(offerWrapperHeight - $(this).innerHeight()) / 2);
+      $(header).css('top',(offerWrapperHeight - $(header).innerHeight()) / 2);
     }
 
   );
@@ -197,7 +216,7 @@ $(document).ready(() => {
 
     });
 
-  
+
 
 
 
@@ -258,7 +277,7 @@ $(document).ready(() => {
                 .fail(function(error) {
 
                     console.log(error);
-                })
+                });
         }
 
 
