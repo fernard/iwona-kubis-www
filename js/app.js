@@ -116,7 +116,6 @@ $(document).ready(() => {
 
     const fadeInElems = $('.fade-in');
 
-
     function handleFadeIn() {
 
       fadeInElems.each((index, elem) => {
