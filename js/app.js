@@ -122,10 +122,10 @@ $(document).ready(() => {
 
         const fadeInAt = ($(window).scrollTop() + $(window).innerHeight()) - ($(elem).innerHeight() / 4);
         const elemBottom = $(elem).offset().top + $(elem).innerHeight();
-        const isHalfVisible = fadeInAt > $(elem).offset().top;
+        const isVisibleEnough = fadeInAt > $(elem).offset().top;
         const isNotScrolledOver = $(window).scrollTop() < elemBottom;
 
-        if (isHalfVisible && isNotScrolledOver) {
+        if (isVisibleEnough && isNotScrolledOver) {
           $(elem).addClass('active');
         } else {
 
@@ -221,7 +221,7 @@ $(document).ready(() => {
 
     // Validate form
 
-    var errorMessage = $('.error-message'),
+    const errorMessage = $('.error-message'),
         form = $('#myForm'),
         nameInput = $('#nameInput'),
         emailInput = $('#emailInput'),
@@ -271,6 +271,7 @@ $(document).ready(() => {
                     errorMessage.css('border', '2px solid green').css('color', 'green');
                     errorMessage.text('Udało się wysłać wiadomość!');
                     errorMessage.fadeIn('400');
+
 
                 })
                 .fail(function(error) {
