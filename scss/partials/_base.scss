@@ -51,6 +51,14 @@ h3 {
             @include fontProp(120%, 700 ,inherit);
         }
     }
+
+    img {
+       margin-left: 1rem;
+       transition: transform .3s;
+       &:hover {
+           transform: scale(0.8);
+       }
+    }
 }
 
 .column-wrapper {
@@ -177,6 +185,7 @@ h3 {
 }
 
 #development-topics {
+    margin-top: 50px;
     .col-xs-12 {
         .topic-wrapper {
             margin-top: 3rem;
