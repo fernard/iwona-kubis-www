@@ -2,13 +2,18 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    entry: ["./js/app.js"],
-    output: {
+    entry: {
+        bundle: './js/app.js',
+        vendor: 'jquery'
+    },
+    output: {   
         path: path.resolve('./build'),
-        filename: "bundle.js",
+        filename: "[name].js",
         publicPath: './build/'
     },
-    plugins: [new webpack.optimize.UglifyJsPlugin()],
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.CommonsChunkPlugin({name:'vendor', filename: 'vendor.js',minChunks: Infinity})],
     watch: true,
     module: {
         loaders: [{
