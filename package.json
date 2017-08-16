@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf build/*",
-    "build": "npm run clean && ./node_modules/.bin/webpack"
+    "copy": "cp mail.php googled8a80b95e95be518.html build/",
+    "build": "npm run clean && npm run copy && webpack"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +17,9 @@
     "babel-preset-es2015": "^6.24.0",
     "bootstrap-sass": "^3.3.7",
     "css-loader": "^0.27.3",
+    "extract-loader": "^1.0.0",
     "file-loader": "^0.11.2",
+    "html-loader": "^0.5.1",
     "image-webpack-loader": "^3.3.1",
     "jquery": "^3.2.1",
     "node-sass": "^4.5.0",

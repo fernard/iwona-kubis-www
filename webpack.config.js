@@ -4,16 +4,17 @@ var path = require('path');
 module.exports = {
     entry: {
         bundle: './js/app.js',
-        vendor: 'jquery'
+        vendor: 'jquery',
+        html: ['./index.html','./standard_package.html','./premium_package.html','./comfort_package.html' ]
     },
-    output: {   
+    output: {
         path: path.resolve('./build'),
         filename: "[name].js",
-        publicPath: './build/'
+        publicPath: ''
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({name:'vendor', filename: 'vendor.js',minChunks: Infinity})],
+        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity })],
     watch: true,
     module: {
         loaders: [{
@@ -40,7 +41,6 @@ module.exports = {
             {
                 loader: 'image-webpack-loader',
                 query: {
-
                     mozjpeg: {
                         progressive: true,
                     },
@@ -58,12 +58,14 @@ module.exports = {
             }
             ]
         },
-
+        {
+            test: /\.(html)$/,
+            loader: 'file-loader?name=[path][name].[ext]!extract-loader!html-loader'
+        },
         {
             test: /\.(eot|ttf|woff|woff2)$/,
             loader: 'url-loader'
         }
-
         ]
     }
 };
