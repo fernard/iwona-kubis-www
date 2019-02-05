@@ -96,10 +96,9 @@ $(document).ready(() => {
 
 
         if (href.indexOf('#') === 0) {
-
             const divOffsetTop = $(href).offset().top - 50;
 
-            $('body').animate({
+            $('body, html').animate({
 
                 scrollTop: divOffsetTop
 
