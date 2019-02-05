@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf build/*",
-    "copy": "cp mail.php googled8a80b95e95be518.html build/",
+    "clean": "rm -rf ./build",
+    "copy": "mkdir build && cp mail.php googled8a80b95e95be518.html package.json build/",
     "build": "npm run clean && npm run copy && webpack"
   },
   "author": "",
@@ -23,7 +23,6 @@
     "image-webpack-loader": "^3.3.1",
     "jquery": "^3.2.1",
     "node-sass": "^4.5.0",
-    "rimraf": "^2.6.1",
     "sass-loader": "^6.0.3",
     "slick-carousel": "^1.6.0",
     "style-loader": "^0.15.0",
