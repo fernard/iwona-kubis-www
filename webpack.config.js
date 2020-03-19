@@ -8,7 +8,7 @@ module.exports = {
         html: ['./index.html','./standard_package.html','./premium_package.html','./comfort_package.html' ]
     },
     output: {
-        path: path.resolve('./build'),
+        path: path.resolve(process.cwd(),'build'),
         filename: "[name].js",
         publicPath: ''
     },
