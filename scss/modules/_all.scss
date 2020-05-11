@@ -150,9 +150,8 @@ a {
     cursor: pointer;
 }
 
-a:visited {
-
-
+a.link {
+   color: $main-purple;
 }
 
 p {
@@ -168,6 +167,10 @@ ul {
 
   list-style-type: none;
   text-align: center;
+}
+
+.flex-centered-container {
+  @include flexProp(column,center,center);
 }
 
 
