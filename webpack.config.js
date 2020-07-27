@@ -58,6 +58,18 @@ module.exports = {
             }
             ]
         },
+
+        {
+            test: /\.pdf$/,
+            loaders: [{
+                loader: 'file-loader',
+                options: {
+                    name: 'assets/[name].[ext]',
+                    context: ''
+                }
+            },
+            ]
+        },
         {
             test: /\.(html)$/,
             loader: 'file-loader?name=[path][name].[ext]!extract-loader!html-loader'

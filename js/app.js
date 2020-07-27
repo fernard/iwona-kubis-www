@@ -214,10 +214,6 @@ $(document).ready(() => {
 
     });
 
-
-
-
-
     // Validate form
 
     const errorMessage = $('.error-message'),
@@ -283,6 +279,35 @@ $(document).ready(() => {
 
     });
 
+    // Accept cookies
 
+    const isPolicyAccepted = document.cookie.indexOf('gdprAccepted') > -1;
+
+    const cookieAcceptanceBtn = $('.accept-policy');
+    const popupContainer = $('.popup-container');
+
+    if (!isPolicyAccepted) {
+        popupContainer.addClass('active');
+    }
+
+    const handleAcceptCookiesPolicy = (btn) => {
+
+        btn.on('click', (e) => {
+            
+            popupContainer.removeClass('active');
+            document.cookie = 'gdprAccepted=true; max-age=31536000; path=/;'
+  
+        });
+      };
+
+    handleAcceptCookiesPolicy(cookieAcceptanceBtn);
+
+    // Widget
+
+    const widgetWrapper =  $('.widget-wrapper');
+    const closeWidgetBtn = widgetWrapper.find('button');
+    closeWidgetBtn.on('click', () => {
+        widgetWrapper.addClass('closed');
+    });
 
 });

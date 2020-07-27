@@ -1,0 +1,35 @@
+.popup-container {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($color: $main-grey, $alpha: 0.6);
+    align-items: flex-end;
+    font-size: 1.5rem;
+    display: none;
+
+    &.active {
+        display: flex;
+    }
+}
+
+.popup-policy-container {
+    background: $light-beige;
+    border-top: 4px solid $second-beige;
+    padding: 5px;
+    width: 100%;
+    & > p > a {
+        color: $main-purple;
+    }
+}
+
+.accept-policy {
+    @include moreInfoClass($main-purple);
+    padding-top: 0;
+    &:hover {
+        box-shadow: inset 200px 0 0 0 $main-purple;
+        color: white;
+    }
+}
