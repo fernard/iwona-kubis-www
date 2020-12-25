@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./build",
-    "copy": "mkdir build && cp mail.php googled8a80b95e95be518.html build/",
+    "copy": "mkdir build && cp googled8a80b95e95be518.html build/",
     "build": "npm run clean && npm run copy && webpack",
     "dev": "node server/server.js"
   },

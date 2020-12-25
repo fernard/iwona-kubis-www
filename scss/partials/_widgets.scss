@@ -6,6 +6,13 @@
     border: 3px solid $second-beige;
     padding: 2rem;
     max-width: 300px;
+    transform: translateX(0px);
+    transition: all 0.2s;
+
+    @include breakpoints($media-xs) {
+        top: 120px;
+        max-width: inherit;
+    }
 
     & > div > div {
         max-width: 100%!important;
@@ -14,18 +21,18 @@
         }
     }
 
-    & > button {
-        @include moreInfoClass($main-grey);
-        padding-top: 0;
-        margin-top: 10px;
-        &:hover {
-            box-shadow: inset 200px 0 0 0 $main-grey;
-            color: white;
-        }
+    &.closed {
+        transform: translateX(400px);
     }
 
-    &.closed {
-        display: none;
+    & > button {
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        @include posAbsProp(5px, auto, auto, 5px);
+        @include fontProp(2rem, 800, $main-grey);
     }
 
 }
+
+

@@ -10,9 +10,14 @@
     font-size: 1.5rem;
     display: none;
 
+    @include breakpoints($media-xs) {
+        align-items: baseline;
+    }
+
     &.active {
         display: flex;
     }
+
 }
 
 .popup-policy-container {

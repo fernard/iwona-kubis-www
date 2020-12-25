@@ -214,70 +214,14 @@ $(document).ready(() => {
 
     });
 
-    // Validate form
+    // Widget
 
-    const errorMessage = $('.error-message'),
-        form = $('#myForm'),
-        nameInput = $('#nameInput'),
-        emailInput = $('#emailInput'),
-        subject = $('#subject'),
-        message = form.find('#message');
-
-    form.on('submit', (e) => {
-
-        e.preventDefault();
-
-        const formData = {
-
-            name: nameInput.val(),
-            email: emailInput.val(),
-            subject: subject.val(),
-            message: message.val()
-
-        };
-
-        if (formData.name.length < 5) {
-
-            errorMessage.text('Za krótkie imię');
-            errorMessage.fadeIn('400');
-
-        } else if (formData.email.indexOf('@') === -1 || formData.email.indexOf('.') === -1) {
-            errorMessage.text('Niepoprawny adres e-mail');
-            errorMessage.fadeIn('400');
-        } else if (formData.subject.length < 5) {
-            errorMessage.text('Za krótki temat wiadomości');
-            errorMessage.fadeIn('400');
-        } else if (formData.message.length < 10) {
-            errorMessage.text('Za krótka wiadomość');
-            errorMessage.fadeIn('400');
-        } else {
-            // Sending form data
-            $.ajax({
-
-                    type: "POST",
-                    url: 'mail.php',
-                    data: formData,
-                    dataType: 'json'
-
-
-                }).done(function(success) {
-                    console.log(success);
-
-                    errorMessage.css('border', '2px solid green').css('color', 'green');
-                    errorMessage.text('Udało się wysłać wiadomość!');
-                    errorMessage.fadeIn('400');
-
-
-                })
-                .fail(function(error) {
-
-                    console.log(error);
-                });
-        }
-
-
-
+        const widgetWrapper =  $('.widget-wrapper');
+        const closeWidgetBtn = widgetWrapper.find('button');
+        closeWidgetBtn.on('click', () => {
+            widgetWrapper.addClass('closed');
     });
+
 
     // Accept cookies
 
@@ -286,28 +230,25 @@ $(document).ready(() => {
     const cookieAcceptanceBtn = $('.accept-policy');
     const popupContainer = $('.popup-container');
 
-    if (!isPolicyAccepted) {
+    if (isPolicyAccepted) {
+        widgetWrapper.removeClass('closed');
+    } else {
         popupContainer.addClass('active');
+        document.body.style.overflowY = 'hidden';
     }
 
     const handleAcceptCookiesPolicy = (btn) => {
 
         btn.on('click', (e) => {
-            
             popupContainer.removeClass('active');
+            document.body.style.overflowY = '';
             document.cookie = 'gdprAccepted=true; max-age=31536000; path=/;'
-  
+            widgetWrapper.removeClass('closed');  
         });
       };
 
     handleAcceptCookiesPolicy(cookieAcceptanceBtn);
 
-    // Widget
 
-    const widgetWrapper =  $('.widget-wrapper');
-    const closeWidgetBtn = widgetWrapper.find('button');
-    closeWidgetBtn.on('click', () => {
-        widgetWrapper.addClass('closed');
-    });
 
 });

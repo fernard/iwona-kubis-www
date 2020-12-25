@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(www\.)?blog.iwona-kubis\.pl\.wp [NC]
+RewriteRule (.*) http://blog.iwona-kubis.pl/index.php$1 [R=301,L]
